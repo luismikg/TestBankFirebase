@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary">#08A899</color> <!-- Main color for the application-->
+    <color name="primaryDark">#045D78</color> <!-- The similar main color but more light -->
+    <color name="secondary">#33BAF8</color> <!-- The secondary color for the application-->
+    <color name="accent">#8BC34A</color> <!-- Color for highlight elements in the application-->
+
+    <!-- Custom colors -->
+    <color name="gold">#FFE78F</color>
+    <color name="black_alpha">#98000000</color>
+    <color name="white_alpha">#98FFFFFF</color>
+    <color name="red">#FF0000</color>
+</resources>

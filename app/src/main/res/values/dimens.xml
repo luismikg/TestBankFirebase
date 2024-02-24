@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="big_margin">32dp</dimen>
+    <dimen name="neutral_width">0dp</dimen>
+    <dimen name="neutral_height">0dp</dimen>
+    <dimen name="corner_small_radius">8dp</dimen>
+    <dimen name="corner_medium_radius">16dp</dimen>
+    <dimen name="corner_big_radius">24dp</dimen>
+</resources>

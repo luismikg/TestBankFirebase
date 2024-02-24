@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">StoriBanck</string>
+    <string name="hello">¡Hola!</string>
+    <string name="intro1">Tu nueva historia comienza aquí,</string>
+    <string name="intro2">elege una opción:</string>
+    <string name="email">Correo Electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="start_login">Iniciar sesión</string>
+    <string name="login">INICIO</string>
+    <string name="register">REGISTRO</string>
+    <string name="intro3">Crea tu historia junto con nosotros</string>
+    <string name="name">Nombre</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

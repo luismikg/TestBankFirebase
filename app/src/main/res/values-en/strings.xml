@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StoriBanck</string>
+    <string name="hello">Hello!</string>
+    <string name="intro1">Your new story start here,</string>
+    <string name="intro2">choose a option:</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="start_login">Start</string>
+    <string name="login">LOGIN</string>
+    <string name="register">REGISTER</string>
+    <string name="intro3">"Create your story together with us "</string>
+    <string name="name">Name</string>
+</resources>

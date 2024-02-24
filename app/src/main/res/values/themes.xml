@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.StoriBanck" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.StoriBanck" parent="Base.Theme.StoriBanck" />
+
+    <style name="Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="Body" parent="Title">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="BodyBold" parent="Body">
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
