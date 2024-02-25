@@ -1,16 +1,23 @@
 package com.luis.storibanck.presentation.login.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.luis.storibanck.presentation.login.states.Errors
+import androidx.lifecycle.viewModelScope
+import com.google.firebase.auth.FirebaseUser
+import com.luis.storibanck.domain.useCases.LoginUserUseCase
+import com.luis.storibanck.domain.useCases.ValidAuthExceptionUseCase
 import com.luis.storibanck.presentation.login.states.LoginState
+import com.luis.storibanck.presentation.utils.Errors
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel : ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val loginUserUseCase: LoginUserUseCase,
+    private val validAuthExceptionUseCase: ValidAuthExceptionUseCase
+) : ViewModel() {
 
     private lateinit var errors: Errors
 
@@ -21,29 +28,20 @@ class LoginViewModel : ViewModel() {
         _state.value = LoginState.Loading
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
-            FirebaseAuth
-                .getInstance()
-                .signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        _state.value = LoginState.Success
-                    } else {
-                        _state.value = LoginState.Error(validException(task))
-                    }
+            viewModelScope.launch {
+                val result = loginUserUseCase(email, password)
+                _state.value = when {
+                    result.isSuccess -> LoginState.Success
+                    else -> LoginState.Error(validException(result))
                 }
+            }
         } else {
             _state.value = LoginState.Error(errors.completeAllField)
         }
     }
 
-    private fun validException(task: Task<AuthResult>): String {
-        return task.exception?.let { exception ->
-            try {
-                throw exception
-            } catch (e: FirebaseAuthInvalidCredentialsException) {
-                errors.credentialsNotValid
-            }
-        } ?: errors.credentialsNotValid
+    private fun validException(result: Result<FirebaseUser?>): String {
+        return validAuthExceptionUseCase(result, errors)
     }
 
     fun possibleErrors(err: Errors) {

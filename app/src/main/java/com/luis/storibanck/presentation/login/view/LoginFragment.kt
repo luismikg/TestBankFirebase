@@ -16,11 +16,13 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.luis.storibanck.R
 import com.luis.storibanck.databinding.FragmentLoginBinding
-import com.luis.storibanck.presentation.login.states.Errors
 import com.luis.storibanck.presentation.login.states.LoginState
 import com.luis.storibanck.presentation.login.viewModel.LoginViewModel
+import com.luis.storibanck.presentation.utils.Errors
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
@@ -65,8 +67,8 @@ class LoginFragment : Fragment() {
     private fun initUIState() {
         viewModel.possibleErrors(
             Errors(
-                resources.getString(R.string.complete_all_field),
-                resources.getString(R.string.credentials_not_valid)
+                completeAllField = resources.getString(R.string.complete_all_field),
+                credentialsNotValid = resources.getString(R.string.credentials_not_valid)
             )
         )
 

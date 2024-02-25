@@ -78,9 +78,9 @@
         android:layout_margin="@dimen/medium_margin"
         android:background="@drawable/ic_big_bank"
         android:backgroundTint="@color/white"
+        android:importantForAccessibility="no"
         app:layout_constraintBottom_toTopOf="@+id/guideBottomVertical"
-        app:layout_constraintEnd_toEndOf="@+id/guideHorizontal"
-        android:importantForAccessibility="no" />
+        app:layout_constraintEnd_toEndOf="@+id/guideHorizontal" />
 
     <TextView
         android:id="@+id/strLogin"
@@ -161,13 +161,6 @@
                     android:drawablePadding="@dimen/small_margin"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress" />
-
-                <com.example.loadinganimation.LoadingAnimation
-                    android:id="@+id/loadingAnim"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:barType="@drawable/loading_anim"
-                    app:enlarge="10" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -245,6 +238,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.loadinganimation.LoadingAnimation
+            android:id="@+id/loadingAnim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:barType="@drawable/loading_anim"
+            app:enlarge="10" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

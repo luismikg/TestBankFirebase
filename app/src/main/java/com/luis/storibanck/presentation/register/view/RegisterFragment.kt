@@ -12,15 +12,18 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
-import com.luis.storibanck.R
 import com.luis.storibanck.databinding.FragmentRegisterBinding
-import com.luis.storibanck.presentation.register.states.Errors
+import com.luis.storibanck.R
+import com.luis.storibanck.presentation.utils.Errors
 import com.luis.storibanck.presentation.register.states.RegisterState
 import com.luis.storibanck.presentation.register.viewModel.RegisterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-class RegisterFragment : Fragment() {
+@AndroidEntryPoint
+class RegisterFragment @Inject constructor() : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
@@ -80,7 +83,7 @@ class RegisterFragment : Fragment() {
                     when (state) {
                         RegisterState.Starting -> enableScreen()
                         RegisterState.Loading -> disableScreen()
-                        RegisterState.Success -> enableScreen()
+                        is RegisterState.Success -> successRegister(state.user)
                         is RegisterState.Error -> {
                             enableScreen()
                             showSnackBar(state.error)
@@ -93,6 +96,10 @@ class RegisterFragment : Fragment() {
 
     private fun showSnackBar(message: String) {
         Snackbar.make(binding.root, message, BaseTransientBottomBar.LENGTH_SHORT).show()
+    }
+
+    private fun successRegister(user: String) {
+        enableScreen()
     }
 
     private fun disableScreen() {

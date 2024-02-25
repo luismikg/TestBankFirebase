@@ -19,7 +19,9 @@
             app:popExitAnim="@anim/slide_to_left" />
         <action
             android:id="@+id/action_loginFragment_to_idPhotoFragment"
-            app:destination="@id/idPhotoFragment" />
+            app:destination="@id/idPhotoFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -30,7 +32,8 @@
             android:id="@+id/action_registerFragment_to_idPhotoFragment"
             app:destination="@id/idPhotoFragment"
             app:enterAnim="@anim/slide_from_right"
-            app:exitAnim="@anim/slide_to_left" />
+            app:exitAnim="@anim/slide_to_left"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/idPhotoFragment"
