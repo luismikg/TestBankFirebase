@@ -3,6 +3,7 @@ package com.luis.storibanck.presentation.register.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseUser
+import com.luis.storibanck.domain.model.RegisterModel
 import com.luis.storibanck.domain.useCases.CreateUserWithEmailAndPasswordUseCase
 import com.luis.storibanck.domain.useCases.ValidAuthExceptionUseCase
 import com.luis.storibanck.presentation.utils.Errors
@@ -30,7 +31,9 @@ class RegisterViewModel @Inject constructor(
         if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && passwordConfirmation.isNotEmpty()) {
             if (password == passwordConfirmation) {
                 viewModelScope.launch {
-                    val result = createUserWithEmailAndPasswordUseCase(email, password)
+                    val result = createUserWithEmailAndPasswordUseCase(
+                        RegisterModel(name = name, email = email, password = password)
+                    )
                     _state.value = when {
                         result.isSuccess -> RegisterState.Success(name)
                         else -> RegisterState.Error(validException(result))

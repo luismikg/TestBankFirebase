@@ -5,15 +5,19 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
+import com.luis.storibanck.data.network.request.RegisterRequest
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class FirebaseAuthDataSourceImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : FirebaseAuthDataSource {
-    override suspend fun createUser(email: String, password: String): Result<FirebaseUser?> {
+    override suspend fun createUser(registerRequest: RegisterRequest): Result<FirebaseUser?> {
         return try {
-            val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+            val result = firebaseAuth.createUserWithEmailAndPassword(
+                registerRequest.email,
+                registerRequest.password
+            ).await()
             if (result.user != null) {
                 Result.success(result.user)
             } else {
