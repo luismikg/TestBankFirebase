@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "276242800637",
+    "project_id": "storibanck",
+    "storage_bucket": "storibanck.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276242800637:android:fc472a1ef5f1e8cc7c4394",
+        "android_client_info": {
+          "package_name": "com.luis.storibanck"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwmwp_uxtsciljHQOKTKMQvdq8POaxVec"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

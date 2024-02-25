@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:background="@color/primaryDark"
-    tools:context=".presentation.login.LoginFragment">
+    tools:context=".presentation.register.view.RegisterFragment"
+    tools:ignore="Overdraw">
 
     <TextView
         android:id="@+id/strHello"
@@ -78,7 +79,8 @@
         android:background="@drawable/ic_big_bank"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideBottomVertical"
-        app:layout_constraintEnd_toEndOf="@+id/guideHorizontal" />
+        app:layout_constraintEnd_toEndOf="@+id/guideHorizontal"
+        android:importantForAccessibility="no" />
 
     <TextView
         android:id="@+id/strLogin"
@@ -159,6 +161,13 @@
                     android:drawablePadding="@dimen/small_margin"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress" />
+
+                <com.example.loadinganimation.LoadingAnimation
+                    android:id="@+id/loadingAnim"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:barType="@drawable/loading_anim"
+                    app:enlarge="10" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -204,7 +213,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_login"
@@ -216,5 +225,27 @@
         app:layout_constraintEnd_toEndOf="@+id/cardLogin"
         app:layout_constraintStart_toStartOf="@+id/cardLogin"
         app:layout_constraintTop_toBottomOf="@+id/cardLogin" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loadingContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.3"
+            android:background="@color/primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

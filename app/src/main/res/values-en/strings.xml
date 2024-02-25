@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">StoriBanck</string>
+    <string name="app_name">StoriBank</string>
     <string name="hello">Hello!</string>
     <string name="intro1">Your new story start here,</string>
     <string name="intro2">choose a option:</string>
@@ -11,4 +11,10 @@
     <string name="register">REGISTER</string>
     <string name="intro3">"Create your story together with us "</string>
     <string name="name">Name</string>
+    <string name="complete_all_field">Complete all fields</string>
+    <string name="password_not_equals">Passwords should be equals</string>
+    <string name="weak_password">The password is invalid it must 6 characters at least</string>
+    <string name="credentials_not_valid">The credentials are Invalid, Please try valid credentials</string>
+    <string name="user_already_exists">The email address is already in use by another account</string>
+    <string name="camera_needs">" You need to take a photo of your ID to continue"</string>
 </resources>

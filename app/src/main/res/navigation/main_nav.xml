@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.luis.storibanck.presentation.login.LoginFragment"
+        android:name="com.luis.storibanck.presentation.login.view.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
@@ -17,10 +17,24 @@
             app:exitAnim="@anim/slide_to_right"
             app:popEnterAnim="@anim/slide_from_right"
             app:popExitAnim="@anim/slide_to_left" />
+        <action
+            android:id="@+id/action_loginFragment_to_idPhotoFragment"
+            app:destination="@id/idPhotoFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.luis.storibanck.presentation.register.registerFragment"
+        android:name="com.luis.storibanck.presentation.register.view.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_idPhotoFragment"
+            app:destination="@id/idPhotoFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/idPhotoFragment"
+        android:name="com.luis.storibanck.presentation.idPhoto.IdPhotoFragment"
+        android:label="fragment_id_photo"
+        tools:layout="@layout/fragment_id_photo" />
 </navigation>
