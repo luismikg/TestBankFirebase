@@ -69,6 +69,10 @@ dependencies {
     val firebaseAuthVersion = "22.3.1"
     implementation("com.google.firebase:firebase-auth:$firebaseAuthVersion")
 
+    //firebase authentication
+    val firebaseStorageVersion = "20.3.0"
+    implementation("com.google.firebase:firebase-storage:$firebaseStorageVersion")
+
     //NavComponent
     val navVersion = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
@@ -77,6 +81,10 @@ dependencies {
     //GSON
     val gsonVersion = "2.10.1"
     implementation("com.google.code.gson:gson:$gsonVersion")
+
+    //Lottie
+    val lottieVersion = "3.4.0"
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

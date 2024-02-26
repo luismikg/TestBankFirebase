@@ -96,7 +96,7 @@ class LoginFragment : Fragment() {
     private fun successLoading(hasPhotoID: Boolean) {
         if (this.findNavController().currentDestination?.id == R.id.loginFragment) {
             if (hasPhotoID) {
-                //this.findNavController().navigate(R.id.action_loginFragment_to_idPhotoFragment)
+                this.findNavController().navigate(R.id.action_loginFragment_to_congratsFragment)
             } else {
                 this.findNavController().navigate(R.id.action_loginFragment_to_idPhotoFragment)
             }

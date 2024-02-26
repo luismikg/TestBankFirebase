@@ -29,17 +29,16 @@ class LoginViewModel @Inject constructor(
         if (email.isNotEmpty() && password.isNotEmpty()) {
             viewModelScope.launch {
                 val result = loginUserUseCase(email, password)
-                _state.value = when {
+                when {
                     result.isSuccess -> {
-
-                        var hasPhotoID = false
                         result.onSuccess {
-                            hasPhotoID = it
+                            result.onSuccess {
+                                _state.value = LoginState.Success(it)
+                            }
                         }
-                        LoginState.Success(hasPhotoID)
                     }
 
-                    else -> LoginState.Error(validException(result))
+                    else -> _state.value = LoginState.Error(validException(result))
                 }
             }
         } else {

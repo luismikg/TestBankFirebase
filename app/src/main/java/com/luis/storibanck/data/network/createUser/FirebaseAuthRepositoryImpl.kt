@@ -1,5 +1,6 @@
 package com.luis.storibanck.data.network.createUser
 
+import android.net.Uri
 import com.google.gson.Gson
 import com.luis.storibanck.data.network.createUser.dataSource.FirebaseAuthDataSource
 import com.luis.storibanck.data.network.request.RegisterRequest
@@ -32,6 +33,25 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
         }
 
         return Result.failure(result.exceptionOrNull() ?: Exception("error register"))
+    }
+
+    override suspend fun saveID(uri: Uri): Result<Boolean> {
+        val result = firebaseAuthDataSource.saveID(uri)
+
+        when {
+            result.isSuccess -> {
+                result.onSuccess { uriServer ->
+                    return firebaseAuthDataSource.updateData(uriServer)
+                }
+            }
+
+            else -> return Result.failure(
+                result.exceptionOrNull() ?: Exception("error register")
+            )
+        }
+
+        return Result.failure(result.exceptionOrNull() ?: Exception("error register"))
+
     }
 
     private fun mapper(registerModel: RegisterModel): RegisterRequest {

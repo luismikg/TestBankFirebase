@@ -16,5 +16,8 @@
     <string name="credentials_not_valid">Las credenciales no son válidas. Pruebe con credenciales válidas</string>
     <string name="user_already_exists">"La dirección de correo electrónico ya está en uso por otra cuenta "</string>
     <string name="camera_needs">Necesitas tomar una foto de tu identificación para continuar</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="congrats">Felicitaciones</string>
+    <string name="continue_next">Continuar</string>
+    <string name="congrats_intro_2">Ahora puedes consultar tus transacciones en cualquier momento</string>
+    <string name="congrats_intro_1">Has dado tu primer paso</string>
 </resources>

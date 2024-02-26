@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.idPhoto.IdPhotoFragment">
+    tools:context=".presentation.idPhoto.view.IdPhotoFragment">
 
     <androidx.camera.view.PreviewView
         android:id="@+id/viewIdCard"
@@ -16,11 +16,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        style="@style/Title"
-        android:layout_width="match_parent"
+        android:id="@+id/txtInstruction"
+        style="@style/BodyBold"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium_margin"
+        android:background="@color/primaryDark"
+        android:padding="@dimen/medium_margin"
         android:text="@string/camera_needs"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,16 +39,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/scanAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/medium_margin"
+        app:layout_constraintBottom_toTopOf="@+id/btnTakePhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInstruction"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/scan_animation" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/idScanAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnTakePhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInstruction"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/id_scan_animation" />
+
     <ImageButton
         android:id="@+id/btnTakePhoto"
         android:layout_width="@dimen/size_camara_photo"
         android:layout_height="@dimen/size_camara_photo"
-        android:layout_marginBottom="@dimen/big_margin"
+        android:layout_marginBottom="@dimen/button_camera_margin"
         android:background="@drawable/ic_camera"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/accent"
         android:importantForAccessibility="no"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loadingContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.3"
+            android:background="@color/secondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.example.loadinganimation.LoadingAnimation
+            android:id="@+id/loadingAnim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:barType="@drawable/loading_anim"
+            app:enlarge="10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/successAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnTakePhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtInstruction"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/success_animation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

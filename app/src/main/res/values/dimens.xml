@@ -3,9 +3,10 @@
     <dimen name="small_margin">8dp</dimen>
     <dimen name="medium_margin">16dp</dimen>
     <dimen name="big_margin">32dp</dimen>
+    <dimen name="button_camera_margin">64dp</dimen>
     <dimen name="neutral_width">0dp</dimen>
     <dimen name="neutral_height">0dp</dimen>
     <dimen name="corner_medium_radius">16dp</dimen>
     <dimen name="corner_big_radius">24dp</dimen>
-    <dimen name="size_camara_photo">100dp</dimen>
+    <dimen name="size_camara_photo">50dp</dimen>
 </resources>
