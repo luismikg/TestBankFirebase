@@ -74,22 +74,19 @@ class FirebaseAuthDataSourceImpl @Inject constructor(
 
     private suspend fun makeLoginAfterRegister(registerRequest: RegisterRequest): Result<String> {
         val resultLogin = makeLogin(registerRequest.email, registerRequest.password)
-        when {
-            resultLogin.isSuccess ->
-                resultLogin.onSuccess { firebaseUser ->
-                    firebaseUser?.uid?.let { uid ->
-                        val resultSave = saveDataUser(registerRequest, uid)
-                        return when {
-                            resultSave.isSuccess -> Result.success(uid)
-                            else -> resultSave
-                        }
-                    }
+        resultLogin.onSuccess { firebaseUser ->
+            firebaseUser?.uid?.let { uid ->
+                val resultSave = saveDataUser(registerRequest, uid)
+                return when {
+                    resultSave.isSuccess -> Result.success(uid)
+                    else -> resultSave
                 }
-
-            else -> return Result.failure(
-                resultLogin.exceptionOrNull() ?: Exception("login failed")
-            )
+            } ?: return Result.failure(Exception("login failed, UID not available"))
         }
+        resultLogin.onFailure {
+            return Result.failure(resultLogin.exceptionOrNull() ?: Exception("login failed"))
+        }
+
         return Result.failure(Exception("login failed"))
     }
 
