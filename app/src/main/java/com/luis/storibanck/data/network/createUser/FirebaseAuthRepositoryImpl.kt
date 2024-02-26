@@ -19,17 +19,11 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
     override suspend fun makeLogin(email: String, password: String): Result<Boolean> {
 
         val result = firebaseAuthDataSource.makeLogin(email, password)
-
-        when {
-            result.isSuccess -> {
-                result.onSuccess {
-                    return Result.success(firebaseAuthDataSource.hasPhotoID())
-                }
-            }
-
-            else -> return Result.failure(
-                result.exceptionOrNull() ?: Exception("error register")
-            )
+        result.onSuccess {
+            return Result.success(firebaseAuthDataSource.hasPhotoID())
+        }
+        result.onFailure {
+            return Result.failure(result.exceptionOrNull() ?: Exception("error register"))
         }
 
         return Result.failure(result.exceptionOrNull() ?: Exception("error register"))
@@ -37,21 +31,14 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
 
     override suspend fun saveID(uri: Uri): Result<Boolean> {
         val result = firebaseAuthDataSource.saveID(uri)
-
-        when {
-            result.isSuccess -> {
-                result.onSuccess { uriServer ->
-                    return firebaseAuthDataSource.updateData(uriServer)
-                }
-            }
-
-            else -> return Result.failure(
-                result.exceptionOrNull() ?: Exception("error register")
-            )
+        result.onSuccess { uriServer ->
+            return firebaseAuthDataSource.updateData(uriServer)
+        }
+        result.onFailure {
+            return Result.failure(result.exceptionOrNull() ?: Exception("error register"))
         }
 
         return Result.failure(result.exceptionOrNull() ?: Exception("error register"))
-
     }
 
     private fun mapper(registerModel: RegisterModel): RegisterRequest {
