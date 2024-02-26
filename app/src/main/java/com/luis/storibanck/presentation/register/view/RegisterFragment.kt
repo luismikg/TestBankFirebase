@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.luis.storibanck.databinding.FragmentRegisterBinding
@@ -83,7 +84,7 @@ class RegisterFragment @Inject constructor() : Fragment() {
                     when (state) {
                         RegisterState.Starting -> enableScreen()
                         RegisterState.Loading -> disableScreen()
-                        is RegisterState.Success -> successRegister(state.user)
+                        is RegisterState.Success -> successRegister()
                         is RegisterState.Error -> {
                             enableScreen()
                             showSnackBar(state.error)
@@ -98,8 +99,10 @@ class RegisterFragment @Inject constructor() : Fragment() {
         Snackbar.make(binding.root, message, BaseTransientBottomBar.LENGTH_SHORT).show()
     }
 
-    private fun successRegister(user: String) {
-        enableScreen()
+    private fun successRegister() {
+        if (this.findNavController().currentDestination?.id == R.id.registerFragment) {
+            this.findNavController().navigate(R.id.action_registerFragment_to_idPhotoFragment)
+        }
     }
 
     private fun disableScreen() {
