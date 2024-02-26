@@ -36,4 +36,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/btnTakePhoto"
+        android:layout_width="@dimen/size_camara_photo"
+        android:layout_height="@dimen/size_camara_photo"
+        android:layout_marginBottom="@dimen/big_margin"
+        android:background="@drawable/ic_camera"
+        android:backgroundTint="@color/white"
+        android:importantForAccessibility="no"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

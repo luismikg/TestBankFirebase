@@ -78,7 +78,7 @@ class LoginFragment : Fragment() {
                     when (state) {
                         LoginState.Starting -> enableScreen()
                         LoginState.Loading -> disableScreen()
-                        LoginState.Success -> successLoading()
+                        is LoginState.Success -> successLoading(state.hasPhotoID)
                         is LoginState.Error -> {
                             enableScreen()
                             showSnackBar(state.error)
@@ -93,8 +93,14 @@ class LoginFragment : Fragment() {
         Snackbar.make(binding.root, message, BaseTransientBottomBar.LENGTH_SHORT).show()
     }
 
-    private fun successLoading() {
-        this.findNavController().navigate(R.id.action_loginFragment_to_idPhotoFragment)
+    private fun successLoading(hasPhotoID: Boolean) {
+        if (this.findNavController().currentDestination?.id == R.id.loginFragment) {
+            if (hasPhotoID) {
+                //this.findNavController().navigate(R.id.action_loginFragment_to_idPhotoFragment)
+            } else {
+                this.findNavController().navigate(R.id.action_loginFragment_to_idPhotoFragment)
+            }
+        }
     }
 
     private fun disableScreen() {

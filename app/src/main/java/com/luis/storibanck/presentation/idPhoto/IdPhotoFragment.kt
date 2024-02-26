@@ -75,6 +75,18 @@ class IdPhotoFragment : Fragment() {
                 Log.i("Error", "${e.message}")
             }
         }, ContextCompat.getMainExecutor(requireContext()))
+
+        initUi()
+    }
+
+    private fun initUi() {
+        binding.btnTakePhoto.setOnClickListener {
+            takePhoto()
+        }
+    }
+
+    private fun takePhoto() {
+
     }
 
     private fun showSnackBar(message: String) {

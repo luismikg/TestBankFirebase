@@ -2,7 +2,6 @@ package com.luis.storibanck.presentation.login.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseUser
 import com.luis.storibanck.domain.useCases.LoginUserUseCase
 import com.luis.storibanck.domain.useCases.ValidAuthExceptionUseCase
 import com.luis.storibanck.presentation.login.states.LoginState
@@ -31,7 +30,15 @@ class LoginViewModel @Inject constructor(
             viewModelScope.launch {
                 val result = loginUserUseCase(email, password)
                 _state.value = when {
-                    result.isSuccess -> LoginState.Success
+                    result.isSuccess -> {
+
+                        var hasPhotoID = false
+                        result.onSuccess {
+                            hasPhotoID = it
+                        }
+                        LoginState.Success(hasPhotoID)
+                    }
+
                     else -> LoginState.Error(validException(result))
                 }
             }
@@ -40,7 +47,7 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    private fun validException(result: Result<FirebaseUser?>): String {
+    private fun validException(result: Any): String {
         return validAuthExceptionUseCase(result, errors)
     }
 

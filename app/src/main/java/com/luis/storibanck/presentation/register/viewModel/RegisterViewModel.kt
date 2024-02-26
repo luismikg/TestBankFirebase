@@ -2,7 +2,6 @@ package com.luis.storibanck.presentation.register.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.auth.FirebaseUser
 import com.luis.storibanck.domain.model.RegisterModel
 import com.luis.storibanck.domain.useCases.CreateUserWithEmailAndPasswordUseCase
 import com.luis.storibanck.domain.useCases.ValidAuthExceptionUseCase
@@ -35,7 +34,7 @@ class RegisterViewModel @Inject constructor(
                         RegisterModel(name = name, email = email, password = password)
                     )
                     _state.value = when {
-                        result.isSuccess -> RegisterState.Success(name)
+                        result.isSuccess -> RegisterState.Success
                         else -> RegisterState.Error(validException(result))
                     }
                 }
@@ -47,7 +46,7 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    private fun validException(result: Result<FirebaseUser?>): String {
+    private fun validException(result: Result<String?>): String {
         return validAuthExceptionUseCase(result, errors)
     }
 
