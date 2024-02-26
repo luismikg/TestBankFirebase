@@ -17,4 +17,8 @@
     <string name="credentials_not_valid">The credentials are Invalid, Please try valid credentials</string>
     <string name="user_already_exists">The email address is already in use by another account</string>
     <string name="camera_needs">" You need to take a photo of your ID to continue"</string>
+    <string name="congrats">Congratulations</string>
+    <string name="continue_next">Continue</string>
+    <string name="congrats_intro_2">Now you can check your transactions at any time</string>
+    <string name="congrats_intro_1">You have taken your first step</string>
 </resources>

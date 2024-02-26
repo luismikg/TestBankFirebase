@@ -1,18 +1,21 @@
 package com.luis.storibanck.data.network.createUser.dataSource
 
+import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import com.luis.storibanck.data.network.request.RegisterRequest
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class FirebaseAuthDataSourceImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
-    private val firebaseDatabase: FirebaseDatabase
+    private val firebaseDatabase: FirebaseDatabase,
+    private val firebaseStorage: FirebaseStorage
 ) : FirebaseAuthDataSource {
     override suspend fun createUser(registerRequest: RegisterRequest): Result<String> {
         return try {
@@ -51,17 +54,22 @@ class FirebaseAuthDataSourceImpl @Inject constructor(
 
     override suspend fun hasPhotoID(): Boolean {
         val databaseReference = firebaseDatabase.getReference("user")
-        var result = false
-        firebaseAuth.uid?.let { uid ->
-            databaseReference.child(uid).child("urlImageID").get()
-                .addOnSuccessListener {
-                    result = (it.value as String).isNotEmpty()
-                }.addOnFailureListener {
-                    result = false
-                }.await()
-        }
+        return firebaseAuth.uid?.let { uid ->
+            val resultImageID = databaseReference.child(uid).child("urlImageID").get().await()
+            (resultImageID.value as String).isNotEmpty()
+        } ?: false
+    }
 
-        return result
+    override suspend fun saveID(uri: Uri): Result<String> {
+        val storageReference = firebaseStorage.getReference("images")
+        return firebaseAuth.uid?.let { uid ->
+            val resultPutFile = storageReference.child(uid).putFile(uri).await()
+            val uriImage = resultPutFile.metadata?.reference?.downloadUrl?.await()
+
+            uriImage?.let {
+                Result.success(uriImage.toString())
+            } ?: Result.failure(Exception("Error saving ID"))
+        } ?: Result.failure(Exception("Error saving ID, UID not available"))
     }
 
     private suspend fun makeLoginAfterRegister(registerRequest: RegisterRequest): Result<String> {
@@ -90,17 +98,16 @@ class FirebaseAuthDataSourceImpl @Inject constructor(
         uid: String
     ): Result<String> {
         val databaseReference = firebaseDatabase.getReference("user")
-        var result = Result.success("")
+        databaseReference.child(uid).setValue(registerRequest).await()
+        return Result.success(uid)
+    }
 
-        databaseReference.child(uid).setValue(registerRequest)
-            .addOnSuccessListener {
-                result = Result.success("")
-            }
-            .addOnFailureListener {
-                result = Result.failure(Exception("Error in data base"))
-            }
-            .await()
+    override suspend fun updateData(uri: String): Result<Boolean> {
+        val databaseReference = firebaseDatabase.getReference("user")
 
-        return result
+        return firebaseAuth.uid?.let { uid ->
+            databaseReference.child(uid).child("urlImageID").setValue(uri).await()
+            Result.success(true)
+        } ?: Result.failure(Exception("Error updating ID, UID not available"))
     }
 }
