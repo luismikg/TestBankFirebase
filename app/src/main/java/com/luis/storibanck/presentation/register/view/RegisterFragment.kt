@@ -101,7 +101,8 @@ class RegisterFragment @Inject constructor() : Fragment() {
 
     private fun successRegister() {
         if (this.findNavController().currentDestination?.id == R.id.registerFragment) {
-            this.findNavController().navigate(R.id.action_registerFragment_to_idPhotoFragment)
+            this.findNavController()
+                .navigate(RegisterFragmentDirections.actionRegisterFragmentToIdPhotoFragment())
         }
     }
 

@@ -22,7 +22,7 @@
     <string name="congrats_intro_1">Has dado tu primer paso</string>
     <string name="total_balance">Balance Total</string>
     <string name="today">El día de hoy</string>
-    <string name="moreStatistics">+Statistics</string>
+    <string name="moreStatistics">+Estadísticas</string>
     <string name="financial_situation">Situación financiera</string>
     <string name="amount">Monto:</string>
 </resources>

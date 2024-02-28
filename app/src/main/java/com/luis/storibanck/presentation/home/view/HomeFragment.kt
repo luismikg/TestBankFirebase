@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.BaseTransientBottomBar
-import com.google.android.material.snackbar.Snackbar
 import com.luis.storibanck.R
 import com.luis.storibanck.databinding.FragmentHomeBinding
 import com.luis.storibanck.domain.model.MovementInfo
@@ -99,15 +97,10 @@ class HomeFragment : Fragment() {
         binding.loadingContainer.visibility = View.VISIBLE
     }
 
-    private fun showSnackBar(message: String) {
-        Snackbar.make(binding.root, message, BaseTransientBottomBar.LENGTH_SHORT).show()
-    }
-
     private fun clickItem(movementInfo: MovementInfo) {
         if (this.findNavController().currentDestination?.id == R.id.homeFragment) {
-            //this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment(movementInfo))
-            this.findNavController().navigate(R.id.action_homeFragment_to_homeDetailFragment)
-//            showSnackBar("${movementInfo.total} - ${movementInfo.name}")
+            this.findNavController()
+                .navigate(HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment(movementInfo))
         }
     }
 }

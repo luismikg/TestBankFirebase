@@ -7,7 +7,7 @@
     tools:context=".presentation.home.view.HomeFragment">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/idScanAnimation"
+        android:id="@+id/animBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.5"
