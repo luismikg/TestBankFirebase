@@ -1,11 +1,14 @@
 package com.luis.storibanck.data.network.createUser
 
 import android.net.Uri
+import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.luis.storibanck.data.network.createUser.dataSource.FirebaseAuthDataSource
 import com.luis.storibanck.data.network.request.RegisterRequest
 import com.luis.storibanck.domain.createUserRepository.FirebaseAuthRepository
+import com.luis.storibanck.domain.model.MovementInfo
 import com.luis.storibanck.domain.model.RegisterModel
+import com.luis.storibanck.domain.model.TotalInfo
 import javax.inject.Inject
 import kotlin.Exception
 
@@ -39,6 +42,13 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
         }
 
         return Result.failure(result.exceptionOrNull() ?: Exception("error register"))
+    }
+
+    override fun fetchMovement(
+        stateMovement: MutableLiveData<List<MovementInfo>>,
+        stateHead: MutableLiveData<TotalInfo>
+    ) {
+        firebaseAuthDataSource.fetchMovement(stateMovement, stateHead)
     }
 
     private fun mapper(registerModel: RegisterModel): RegisterRequest {

@@ -42,22 +42,22 @@
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideHorizontal"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="@dimen/guide_line_width"
+        android:layout_height="@dimen/guide_line_width"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideUpVertical"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="@dimen/guide_line_width"
+        android:layout_height="@dimen/guide_line_width"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideBottomVertical"
-        android:layout_width="10dp"
-        android:layout_height="10dp"
+        android:layout_width="@dimen/guide_line_width"
+        android:layout_height="@dimen/guide_line_width"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.90" />
 
@@ -78,9 +78,9 @@
         android:layout_margin="@dimen/medium_margin"
         android:background="@drawable/ic_big_money"
         android:backgroundTint="@color/white"
+        android:importantForAccessibility="no"
         app:layout_constraintBottom_toTopOf="@+id/guideBottomVertical"
-        app:layout_constraintStart_toStartOf="@+id/guideHorizontal"
-        android:importantForAccessibility="no" />
+        app:layout_constraintStart_toStartOf="@+id/guideHorizontal" />
 
     <TextView
         android:id="@+id/strLogin"
