@@ -27,4 +27,10 @@
     <style name="BodyBold" parent="Body">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white_splash</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/incross_icon</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.StoriBank</item>
+    </style>
 </resources>
