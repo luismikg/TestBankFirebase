@@ -18,6 +18,10 @@
     <string name="camera_needs">Necesitas tomar una foto de tu identificación para continuar</string>
     <string name="congrats">Felicitaciones</string>
     <string name="continue_next">Continuar</string>
-    <string name="congrats_intro_2">Ahora puedes consultar tus transacciones en cualquier momento</string>
+    <string name="congrats_intro_2">Tu cuenta ha sido creada exitosamente</string>
     <string name="congrats_intro_1">Has dado tu primer paso</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="total_balance">Balance Total</string>
+    <string name="today">El día de hoy</string>
+    <string name="moreStatistics">+Statistics</string>
 </resources>

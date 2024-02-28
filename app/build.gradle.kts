@@ -86,6 +86,11 @@ dependencies {
     val lottieVersion = "3.4.0"
     implementation("com.airbnb.android:lottie:$lottieVersion")
 
+    //Glide
+    val glideVersion = "4.16.0"
+    annotationProcessor("com.github.bumptech.glide:compiler:$glideVersion")
+    implementation("com.github.bumptech.glide:glide:$glideVersion")
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

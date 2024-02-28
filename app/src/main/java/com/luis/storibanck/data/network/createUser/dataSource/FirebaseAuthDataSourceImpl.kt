@@ -1,14 +1,20 @@
 package com.luis.storibanck.data.network.createUser.dataSource
 
 import android.net.Uri
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.luis.storibanck.data.network.request.RegisterRequest
+import com.luis.storibanck.domain.model.MovementInfo
+import com.luis.storibanck.domain.model.TotalInfo
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -106,5 +112,37 @@ class FirebaseAuthDataSourceImpl @Inject constructor(
             databaseReference.child(uid).child("urlImageID").setValue(uri).await()
             Result.success(true)
         } ?: Result.failure(Exception("Error updating ID, UID not available"))
+    }
+
+    override fun fetchMovement(
+        stateMovement: MutableLiveData<List<MovementInfo>>,
+        stateHead: MutableLiveData<TotalInfo>
+    ) {
+        val databaseReferenceMovement = firebaseDatabase.getReference("movement")
+        val databaseReferenceHead = firebaseDatabase.getReference("head")
+
+        databaseReferenceMovement.orderByChild("order")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val items =
+                        snapshot.children.mapNotNull { it.getValue(MovementInfo::class.java) }
+                    stateMovement.postValue(items)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    stateMovement.postValue(emptyList())
+                }
+            })
+
+        databaseReferenceHead.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val items = snapshot.children.mapNotNull { it.getValue(TotalInfo::class.java) }
+                stateHead.postValue(items.firstOrNull() ?: TotalInfo())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                stateMovement.postValue(emptyList())
+            }
+        })
     }
 }
