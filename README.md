@@ -1,5 +1,11 @@
 # Incross <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="40" height="40" />
 
+<p>
+  <a href="https://www.linkedin.com/in/luismiguelcabralguzman/" rel="nofollow noreferrer">
+    <img src="https://i.stack.imgur.com/gVE0j.png" alt="linkedin">  LinkedIn
+  </a>
+</p>
+
 In this project I applied my skills in building layouts and navigation files, also I explored different Firebase tools like real-time database, storage, and authentication. All of those building a Banking app. 
 
 * __user for test:__ stori@gmail.com
