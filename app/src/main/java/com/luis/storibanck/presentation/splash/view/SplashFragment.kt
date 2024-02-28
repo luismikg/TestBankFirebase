@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -35,8 +36,16 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initUI()
         initUIState()
         viewModel.startApplicacionCount()
+    }
+
+    private fun initUI() {
+        requireActivity().window.statusBarColor = ContextCompat.getColor(
+            requireContext(),
+            R.color.white_splash
+        )
     }
 
     private fun initUIState() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="white_splash">#ECF3ED</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="primary">#08A899</color> <!-- Main color for the application-->
