@@ -13,8 +13,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.luis.storibanck.R
 import com.luis.storibanck.databinding.FragmentHomeDetailBinding
 import com.luis.storibanck.domain.model.MovementInfo
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeDetailBinding
