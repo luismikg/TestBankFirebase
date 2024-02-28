@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="primary">#08A899</color> <!-- Main color for the application-->
     <color name="primaryDark">#045D78</color> <!-- The similar main color but more light -->
     <color name="secondary">#6E3CC8</color> <!-- The secondary color for the application-->

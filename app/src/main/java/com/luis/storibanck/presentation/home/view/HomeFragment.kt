@@ -105,8 +105,9 @@ class HomeFragment : Fragment() {
 
     private fun clickItem(movementInfo: MovementInfo) {
         if (this.findNavController().currentDestination?.id == R.id.homeFragment) {
-            //this.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-            showSnackBar("${movementInfo.total} - ${movementInfo.name}")
+            //this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment(movementInfo))
+            this.findNavController().navigate(R.id.action_homeFragment_to_homeDetailFragment)
+//            showSnackBar("${movementInfo.total} - ${movementInfo.name}")
         }
     }
 }
