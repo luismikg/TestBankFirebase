@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.luis.storibanck.R
@@ -24,15 +23,6 @@ class CongratsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        /*requireActivity().onBackPressedDispatcher.addCallback(
-            requireActivity(),
-            onBackPressedCallback = object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    requireActivity().moveTaskToBack(true)
-                }
-            })*/
-
         initUi()
     }
 

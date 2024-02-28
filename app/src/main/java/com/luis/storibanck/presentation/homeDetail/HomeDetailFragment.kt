@@ -1,6 +1,5 @@
 package com.luis.storibanck.presentation.homeDetail
 
-import android.R.attr.name
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
