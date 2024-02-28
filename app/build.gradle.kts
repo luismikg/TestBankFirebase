@@ -1,9 +1,12 @@
 plugins {
     kotlin("kapt")
+    id("kotlin-android")
     id("com.android.application")
+    id("kotlin-parcelize")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {

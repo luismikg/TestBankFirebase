@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/idScanAnimation"
+        android:id="@+id/animPig"
         android:layout_width="match_parent"
         android:layout_height="@dimen/neutral_width"
         android:layout_marginStart="@dimen/medium_margin"
@@ -56,12 +56,12 @@
         android:layout_marginBottom="@dimen/big_margin"
         android:text="@string/congrats_intro_2"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/materialButton"
+        app:layout_constraintBottom_toTopOf="@+id/btnContinue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/btnContinue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/big_margin"

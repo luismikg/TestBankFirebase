@@ -26,6 +26,7 @@
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
             app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_from_right"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -50,6 +51,8 @@
         <action
             android:id="@+id/action_idPhotoFragment_to_congratsFragment"
             app:destination="@id/congratsFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
             app:popUpTo="@id/idPhotoFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -60,11 +63,33 @@
         tools:layout="@layout/fragment_congrats">
         <action
             android:id="@+id/action_congratsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popUpTo="@id/congratsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.luis.storibanck.presentation.home.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_homeDetailFragment"
+            app:destination="@id/homeDetailFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeDetailFragment"
+        android:name="com.luis.storibanck.presentation.homeDetail.HomeDetailFragment"
+        android:label="fragment_home_detail"
+        tools:layout="@layout/fragment_home_detail">
+
+        <argument
+            android:name="movementInfo"
+            app:argType="com.luis.storibanck.domain.model.MovementInfo" />
+    </fragment>
 </navigation>

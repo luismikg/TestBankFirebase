@@ -197,7 +197,8 @@ class IdPhotoFragment : Fragment() {
 
     private fun next() {
         if (this.findNavController().currentDestination?.id == R.id.idPhotoFragment) {
-            this.findNavController().navigate(R.id.action_idPhotoFragment_to_congratsFragment)
+            this.findNavController()
+                .navigate(IdPhotoFragmentDirections.actionIdPhotoFragmentToCongratsFragment())
         }
     }
 
